@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "hand.h"
+#include "head.h"
 
-PNode fileread(void)
+PTreeNode fileread(void)
 {
     char y;
-    PNode hand = NULL;
-    FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\box\\code\\Training-program-2\\step1\\data.txt", "r");
+    PTreeNode head = NULL;
+    FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\box\\code\\Training-program-2\\user_login.txt", "r");
     if (user_login == NULL)
         exit(1);
     while (!feof(user_login))
@@ -27,8 +27,8 @@ PNode fileread(void)
             x++;
         }
         a.totalcount = 1;
-        PushBack(&hand, a);
+        Insert(a,head);
     }
     fclose(user_login);
-    return hand;
+    return head;
 }

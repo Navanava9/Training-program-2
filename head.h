@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define LENGTH 30
+
+typedef struct User
+{
+    char name[LENGTH];
+    int totalcount;
+} DataType;
+
+typedef struct TreeNode
+{
+    DataType data;
+    struct TreeNode *PLeft;
+    struct TreeNode *Pright;
+} TreeNode, *PTreeNode;
+
+void DestroyBSTree(PTreeNode *pRoot);
+PTreeNode Delete(DataType data, PTreeNode T);
+PTreeNode Insert(DataType data, PTreeNode T);
+void ProOrderTraversal(PTreeNode T);
