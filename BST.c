@@ -91,15 +91,13 @@ void DestroyBSTree(PTreeNode *pRoot)
         return;
 }
 
-PTreeNode Find(char *tar, PTreeNode T)
+void Find(char *tar, PTreeNode T, PTreeNode tr)
 {
     if (!strcmp(tar, T->data.name))
-        return T;
+        tr = T;
     if (!T)
         return;
-    if (strcmp(tar, T->PLeft->data.name))
-        return Find(tar, T->PLeft);
-    if (strcmp(tar, T->Pright->data.name))
-        return Find(tar, T->Pright->data.name);
+    Find(tar, T->PLeft, tr);
+    Find(tar, T->Pright, tr);
     return;
 }
