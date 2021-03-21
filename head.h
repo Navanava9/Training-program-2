@@ -17,6 +17,14 @@ typedef struct TreeNode
     struct TreeNode *Pright;
 } TreeNode, *PTreeNode;
 
+typedef struct AVLNode
+{
+    DataType data;
+    int height;
+    struct TreeNode *PLeft;
+    struct TreeNode *PRight;
+} AVLNode, *PAVLNode;
+
 void DestroyBSTree(PTreeNode *pRoot);
 PTreeNode Delete(DataType data, PTreeNode T);
 PTreeNode Insert(DataType data, PTreeNode T);
