@@ -168,3 +168,16 @@ PAVLNode deleteNode(PAVLNode root, DataType data)
 
     return root;
 }
+
+void DestroyAVL(PAVLNode *pRoot)
+{
+    if (*pRoot)
+    {
+        DestroyBSTree(&(*pRoot)->PLeft);
+        DestroyBSTree(&(*pRoot)->PRight);
+        free(*pRoot);
+        *pRoot = NULL;
+    }
+    else
+        return;
+}

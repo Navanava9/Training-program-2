@@ -27,6 +27,13 @@ typedef struct AVLNode
     struct TreeNode *PRight;
 } AVLNode, *PAVLNode;
 
+typedef struct HarshNode
+{
+    DataType key;
+    int Value;
+    HarshNode *pNext;
+} HarshNode, *PHarshNode;
+
 void DestroyBSTree(PTreeNode *pRoot);
 PTreeNode Delete(DataType data, PTreeNode T);
 PTreeNode Insert(DataType data, PTreeNode T);
@@ -34,5 +41,8 @@ void ProOrderTraversal(PTreeNode T);
 
 PAVLNode insert(PAVLNode node, DataType data);
 PAVLNode deleteNode(PAVLNode root, DataType data);
+void DestroyAVL(PAVLNode *pRoot);
 
 void HarshInsert(DataType Key);
+void DestoryHarsh(PHarshNode *HarshTable);
+PHarshNode FindHarshNode(char *Key, PHarshNode *HarshTable);

@@ -5,12 +5,6 @@
 #include "head.h"
 
 // 定义一个哈希表的节点
-typedef struct HarshNode
-{
-    DataType key;
-    int Value;
-    HarshNode *pNext;
-} HarshNode, *PHarshNode;
 
 //初始化哈希表
 PHarshNode *HarshInit(void)
@@ -73,4 +67,20 @@ PHarshNode FindHarshNode(char *Key, PHarshNode *HarshTable)
         pHarshHead = pHarshHead->pNext;
     }
     return NULL;
+}
+
+void DestoryHarsh(PHarshNode *HarshTable)
+{
+    PHarshNode pHarshHead = NULL;
+    PHarshNode tmp = NULL;
+    for (int i = 0; i < TABIESIZE; i++)
+    {
+        pHarshHead = HarshTable[i];
+        while (pHarshHead != NULL)
+        {
+            tmp = pHarshHead;
+            pHarshHead = pHarshHead->pNext;
+            free(tmp);
+        }
+    }
 }
