@@ -29,3 +29,6 @@ void DestroyBSTree(PTreeNode *pRoot);
 PTreeNode Delete(DataType data, PTreeNode T);
 PTreeNode Insert(DataType data, PTreeNode T);
 void ProOrderTraversal(PTreeNode T);
+
+PAVLNode insert(PAVLNode node, DataType data);
+PAVLNode deleteNode(PAVLNode root, DataType data);
