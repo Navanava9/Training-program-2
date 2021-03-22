@@ -98,3 +98,4 @@ PAVLNode insert(PAVLNode node, DataType data)
  
     return node;
 }
+
