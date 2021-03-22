@@ -11,7 +11,7 @@ int transform(char *string)
     return num;
 }
 
-PTreeNode fileread(void)
+PTreeNode Fileread(void)
 {
     char y;
     PTreeNode head = NULL;
