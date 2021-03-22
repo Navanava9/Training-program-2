@@ -30,7 +30,6 @@ int HarshKey(char *Key)
     return value;
 }
 
-//根据键值对向哈希表中添加节点，如果key已经存在则直接更新键值
 void HarshInsert(DataType Key)
 {
     PHarshNode *harshTable = HarshInit();
@@ -41,35 +40,18 @@ void HarshInsert(DataType Key)
 
     pHarshNodeHead = harshTable[pos];
 
-    while (NULL != pHarshNodeHead) // 如果这个位置对应的不是这一串中最后一个节点的话，那就要向后移动了
-    {
-        if (strcmp(pHarshNodeHead->key.name, Key.name) == 0) //如果这个键值对已经存在，只更新键值即可
-        {
-            pHarshNodeHead->key = Key;
-            return 0;
-        }
-        pHarshNodeHead = pHarshNodeHead->pNext; //向后移动,肯定会有NULL的时候
-    }
+    while (NULL != pHarshNodeHead)
+        pHarshNodeHead = pHarshNodeHead->pNext;
 
     pNewNode = (HarshNode *)malloc(sizeof(HarshNode));
     if (NULL == pNewNode)
         return;
-    memset(pNewNode, 0, sizeof(HarshNode));
+    pNewNode->key = Key;
 
-    //pNewNode->key.name = (char *)malloc(strlen(Key.name) + 1); //申请一块Key大小的内存
-    memset(pNewNode->key.name, 0, strlen(Key.name) + 1);
-
-    strcpy(pNewNode->key.name, Key.name); //将Key的内容赋给 pNewNode -> Key
-    pNewNode->= ;               //键值也复制过来
-
-    pNewNode->pNext = NULL; //由于是新节点，也是尾节点，所以pNext指向NULL
+    pNewNode->pNext = NULL; 
 
     pHarshNodeHead = pNewNode;
-    harshTable[pos] = pHarshNodeHead; //最后一定要让数组中的这个位置指向这个头指针
-
-    g_harsh_table_size++;
-
-    return 0;
+    harshTable[pos] = pHarshNodeHead; 
 }
 
 //打印数组中对应的某个位置的那一串哈希值
