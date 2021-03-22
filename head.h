@@ -34,3 +34,5 @@ void ProOrderTraversal(PTreeNode T);
 
 PAVLNode insert(PAVLNode node, DataType data);
 PAVLNode deleteNode(PAVLNode root, DataType data);
+
+void HarshInsert(DataType Key);

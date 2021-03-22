@@ -48,54 +48,29 @@ void HarshInsert(DataType Key)
         return;
     pNewNode->key = Key;
 
-    pNewNode->pNext = NULL; 
+    pNewNode->pNext = NULL;
 
     pHarshNodeHead = pNewNode;
-    harshTable[pos] = pHarshNodeHead; 
-}
-
-//打印数组中对应的某个位置的那一串哈希值
-void print_harsh_node(int pos)
-{
-    HarshNode *pHarshNodeHead = NULL;
-
-    if (pos >= TABIESIZE)
-        return;
-
-    pHarshNodeHead = harshTable[pos];
-
-    if (NULL == pHarshNodeHead)
-        printf("NULL == pHarshNodeHead\n");
-    while (NULL != pHarshNodeHead)
-    {
-        printf("come here \n");
-        printf("Position:%d, Key:%s, :%d \n", pos, pHarshNodeHead->Key, pHarshNodeHead->);
-        pHarshNodeHead = pHarshNodeHead->pNext;
-    }
+    harshTable[pos] = pHarshNodeHead;
 }
 
 // 根据键值Key来查找对应的哈希节点
-HarshNode *harsh_table_lookup(const char *Key)
+PHarshNode FindHarshNode(char *Key, PHarshNode *HarshTable)
 {
-    unsigned int pos = 0x0;
-    HarshNode *pHarshHead = NULL;
-
+    PHarshNode pHarshHead = NULL;
     if (NULL == Key)
-    {
         return NULL;
-    }
 
-    pos = HarshKey(Key) % TABIESIZE; //计算出在哈希数组中的位置
+    int pos = HarshKey(Key) % TABIESIZE;
 
-    pHarshHead = harshTable[pos];
+    pHarshHead = HarshTable[pos];
 
     while (NULL != pHarshHead)
     {
-        if (strcmp(Key, pHarshHead->Key) == 0) //找到了
+        if (strcmp(Key, pHarshHead->key.name) == 0)
             return pHarshHead;
 
-        pHarshHead = pHarshHead->pNext; // 没有找到的话来到下一个节点
+        pHarshHead = pHarshHead->pNext;
     }
-
     return NULL;
 }
