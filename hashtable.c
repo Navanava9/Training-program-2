@@ -56,7 +56,7 @@ void HarshInsert(DataType Key)
         return;
     memset(pNewNode, 0, sizeof(HarshNode));
 
-    pNewNode->key.name = (char *)malloc(strlen(Key.name) + 1); //申请一块Key大小的内存
+    //pNewNode->key.name = (char *)malloc(strlen(Key.name) + 1); //申请一块Key大小的内存
     memset(pNewNode->key.name, 0, strlen(Key.name) + 1);
 
     strcpy(pNewNode->key.name, Key.name); //将Key的内容赋给 pNewNode -> Key
