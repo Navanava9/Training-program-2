@@ -3,6 +3,8 @@
 #include <stdlib.h>
 
 #define LENGTH 30
+#define TABIESIZE 1000
+#define BASE 31
 
 typedef struct User
 {
