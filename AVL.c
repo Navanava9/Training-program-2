@@ -99,3 +99,80 @@ PAVLNode insert(PAVLNode node, DataType data)
     return node;
 }
 
+PAVLNode minValueNode(PAVLNode node)
+{
+    PAVLNode current = node;
+ 
+    while (current->PLeft != NULL)
+        current = current->PLeft;
+ 
+    return current;
+}
+ 
+PAVLNode deleteNode(PAVLNode root, DataType data)
+{
+ 
+    if (root == NULL)
+        return root;
+ 
+    if (data.totalcount < root->data.totalcount)
+        root->PLeft = deleteNode(root->PLeft, data);
+ 
+    else if (data.totalcount > root->data.totalcount)
+        root->PRight = deleteNode(root->PRight, data);
+ 
+    else
+    {
+        if ((root->PLeft == NULL) || (root->PRight == NULL))
+        {
+            PAVLNode temp = root->PLeft ? root->PLeft : root->PRight;
+ 
+            if (temp == NULL)
+            {
+                temp = root;
+                root = NULL;
+            }
+            else
+                *root = *temp;
+            free(temp);
+        }
+        else
+        {
+            PAVLNode temp = minValueNode(root->PRight);
+ 
+            root->data = temp->data;
+ 
+            root->PRight = deleteNode(root->PRight, temp->data);
+        }
+    }
+ 
+ 
+    if (root == NULL)
+        return root;
+ 
+    root->height = 1 + max(height(root->PLeft), height(root->PRight));
+ 
+    int balance = getBalance(root);
+ 
+ 
+    if (balance > 1 && getBalance(root->PLeft) >= 0) //LL型
+        return ll_rotate(root);
+ 
+ 
+    if (balance > 1 && getBalance(root->PLeft) < 0) //LR型
+    {
+        root->PLeft = rr_rotate(root->PLeft);
+        return ll_rotate(root);
+    }
+ 
+    if (balance < -1 && getBalance(root->PRight) <= 0) //RR型
+        return rr_rotate(root);
+ 
+    if (balance < -1 && getBalance(root->PRight) > 0)  //Rl型
+    {
+        root->PRight = ll_rotate(root->PRight);
+        return rr_rotate(root);
+    }
+ 
+    return root;
+}
