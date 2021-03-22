@@ -52,10 +52,10 @@ PTreeNode Fileread(void)
     return head;
 }
 
-PTreeNode fileread(void)
+PAVLNode fileread(void)
 {
     char y;
-    PTreeNode head = NULL;
+    PAVLNode head = NULL;
     FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\box\\code\\Training-program-2\\data.txt", "r");
     if (user_login == NULL)
         exit(1);
@@ -88,6 +88,47 @@ PTreeNode fileread(void)
         }
         a.totalcount = transform(o);
         insert(head, a);
+    }
+    fclose(user_login);
+    return head;
+}
+
+PHarshNode HarshFileread(void)
+{
+    char y;
+    PHarshNode *head = HarshInit();
+    FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\box\\code\\Training-program-2\\data.txt", "r");
+    if (user_login == NULL)
+        exit(1);
+    while (!feof(user_login))
+    {
+        int x = 0, v = 0;
+        DataType a;
+        char s[LENGTH] = {0};
+        char o[LENGTH] = {0};
+        for (int i = 0; i < LENGTH; i++)
+            a.name[i] = 0;
+        fgets(s, LENGTH, user_login);
+        while (1)
+        {
+            y = s[x];
+            if (y == ',')
+            {
+                x++;
+                break;
+            }
+            a.name[x] = y;
+            x++;
+        }
+        while (1)
+        {
+            y = o[v];
+            if (y == '\n')
+                break;
+            v++;
+        }
+        a.totalcount = transform(o);
+        HarshInsert(a, head);
     }
     fclose(user_login);
     return head;

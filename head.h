@@ -34,6 +34,10 @@ typedef struct HarshNode
     HarshNode *pNext;
 } HarshNode, *PHarshNode;
 
+PAVLNode fileread(void);
+PTreeNode Fileread(void);
+PHarshNode HarshFileread(void);
+
 void DestroyBSTree(PTreeNode *pRoot);
 PTreeNode Delete(DataType data, PTreeNode T);
 PTreeNode Insert(DataType data, PTreeNode T);
@@ -43,6 +47,7 @@ PAVLNode insert(PAVLNode node, DataType data);
 PAVLNode deleteNode(PAVLNode root, DataType data);
 void DestroyAVL(PAVLNode *pRoot);
 
-void HarshInsert(DataType Key);
+void HarshInsert(DataType Key, PHarshNode *HarshTable);
 void DestoryHarsh(PHarshNode *HarshTable);
 PHarshNode FindHarshNode(char *Key, PHarshNode *HarshTable);
+PHarshNode *HarshInit(void);

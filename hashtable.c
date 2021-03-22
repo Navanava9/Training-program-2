@@ -24,9 +24,8 @@ int HarshKey(char *Key)
     return value;
 }
 
-void HarshInsert(DataType Key)
+void HarshInsert(DataType Key, PHarshNode *harshTable)
 {
-    PHarshNode *harshTable = HarshInit();
     PHarshNode pHarshNodeHead = NULL;
     PHarshNode pNewNode = NULL;
 
