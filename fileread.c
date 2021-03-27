@@ -3,14 +3,6 @@
 #include <stdlib.h>
 #include "head.h"
 
-int transform(char *string)
-{
-    int num = 0;
-    while (*string++)
-        num = num * 10 + num - '0';
-    return num;
-}
-
 PTreeNode Fileread(void)
 {
     char y;
@@ -40,12 +32,14 @@ PTreeNode Fileread(void)
         }
         while (1)
         {
-            y = o[v];
+            y = s[x];
             if (y == '\n')
                 break;
+            o[v] = y;
             v++;
+            x++;
         }
-        a.totalcount = transform(o);
+        a.totalcount = atoi(o);
         Insert(a, head);
     }
     fclose(user_login);
@@ -81,12 +75,14 @@ PAVLNode fileread(void)
         }
         while (1)
         {
-            y = o[v];
+            y = s[x];
             if (y == '\n')
                 break;
+            o[v] = y;
             v++;
+            x++;
         }
-        a.totalcount = transform(o);
+        a.totalcount = atoi(o);
         insert(head, a);
     }
     fclose(user_login);
@@ -122,12 +118,14 @@ PAVLNode fileread(void)
         }
         while (1)
         {
-            y = o[v];
+            y = s[x];
             if (y == '\n')
                 break;
+            o[v] = y;
             v++;
+            x++;
         }
-        a.totalcount = transform(o);
+        a.totalcount = atoi(o);
         HarshInsert(a, head);
     }
     fclose(user_login);
