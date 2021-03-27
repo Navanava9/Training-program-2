@@ -93,7 +93,7 @@ PAVLNode fileread(void)
     return head;
 }
 
-PHarshNode HarshFileread(void)
+/*PHarshNode HarshFileread(void)
 {
     char y;
     PHarshNode *head = HarshInit();
@@ -132,4 +132,4 @@ PHarshNode HarshFileread(void)
     }
     fclose(user_login);
     return head;
-}
+}*/

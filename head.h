@@ -31,7 +31,7 @@ typedef struct HarshNode
 {
     DataType key;
     int Value;
-    HarshNode *pNext;
+    struct HarshNode *pNext;
 } HarshNode, *PHarshNode;
 
 PAVLNode fileread(void);
