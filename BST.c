@@ -183,4 +183,4 @@ int Delete(PTreeNode *Root, DataType a)
         }
     }
     return 1;
-}
+}//返回值-1表示删除非法.1代表成功.
