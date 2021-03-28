@@ -40,7 +40,7 @@ PTreeNode Fileread(void)
             x++;
         }
         a.totalcount = atoi(o);
-        Insert(a, head);
+        Insert(&head,a);
     }
     fclose(user_login);
     return head;
