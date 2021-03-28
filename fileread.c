@@ -22,7 +22,7 @@ PTreeNode Fileread(void)
         while (1)
         {
             y = s[x];
-            if (y == ',')
+            if (y == ',' || y == '\0')
             {
                 x++;
                 break;
@@ -33,7 +33,7 @@ PTreeNode Fileread(void)
         while (1)
         {
             y = s[x];
-            if (y == '\n')
+            if (y == '\n' || y == '\0')
                 break;
             o[v] = y;
             v++;
@@ -65,7 +65,7 @@ PAVLNode fileread(void)
         while (1)
         {
             y = s[x];
-            if (y == ',')
+            if (y == ',' || y == '\0')
             {
                 x++;
                 break;
@@ -76,7 +76,7 @@ PAVLNode fileread(void)
         while (1)
         {
             y = s[x];
-            if (y == '\n')
+            if (y == '\n' || y == '\0')
                 break;
             o[v] = y;
             v++;
@@ -108,7 +108,7 @@ PAVLNode fileread(void)
         while (1)
         {
             y = s[x];
-            if (y == ',')
+            if (y == ','|| y == '\0')
             {
                 x++;
                 break;
@@ -119,7 +119,7 @@ PAVLNode fileread(void)
         while (1)
         {
             y = s[x];
-            if (y == '\n')
+            if (y == '\n'|| y == '\0')
                 break;
             o[v] = y;
             v++;
