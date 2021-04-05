@@ -10,7 +10,7 @@ PTreeNode Fileread(void)
     FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\box\\code\\Training-program-2\\data.txt", "r");
     if (user_login == NULL)
         exit(1);
-    while (!feof(user_login))
+    while (!feof(user_login)) 
     {
         int x = 0, v = 0;
         DataType a;
@@ -40,7 +40,7 @@ PTreeNode Fileread(void)
             x++;
         }
         a.totalcount = atoi(o);
-        Insert(&head,a);
+        Insert(&head, a);
     }
     fclose(user_login);
     return head;
@@ -83,7 +83,7 @@ PAVLNode fileread(void)
             x++;
         }
         a.totalcount = atoi(o);
-        insert(head, a);
+        head = insert(head, a);
     }
     fclose(user_login);
     return head;

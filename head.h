@@ -23,8 +23,8 @@ typedef struct AVLNode
 {
     DataType data;
     int height;
-    struct TreeNode *PLeft;
-    struct TreeNode *PRight;
+    struct AVLNode *PLeft;
+    struct AVLNode *PRight;
 } AVLNode, *PAVLNode;
 
 typedef struct HarshNode

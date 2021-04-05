@@ -5,10 +5,15 @@
 
 int main(void)
 {
+    /* 
     PTreeNode bst;
     bst = Fileread();
-    ProOrderTraversal(bst);
     DestroyBSTree(&bst);
+    */
+
+    PAVLNode avl;
+    avl = fileread();
+    DestroyAVL(&avl);
 
     return 0;
 }
