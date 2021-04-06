@@ -10,7 +10,7 @@ PTreeNode Fileread(void)
     FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\box\\code\\Training-program-2\\data.txt", "r");
     if (user_login == NULL)
         exit(1);
-    while (!feof(user_login)) 
+    while (!feof(user_login))
     {
         int x = 0, v = 0;
         DataType a;
@@ -89,10 +89,12 @@ PAVLNode fileread(void)
     return head;
 }
 
-/*PHarshNode HarshFileread(void)
+PHarshNode *HarshFileread(void)
 {
+    PHarshNode *head = (HarshNode *)malloc(sizeof(HarshNode) * TABIESIZE);
+    for (int xx = 0; xx < TABIESIZE; xx++)
+        head[xx]->Value = NULL;
     char y;
-    PHarshNode *head = HarshInit();
     FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\box\\code\\Training-program-2\\data.txt", "r");
     if (user_login == NULL)
         exit(1);
@@ -108,7 +110,7 @@ PAVLNode fileread(void)
         while (1)
         {
             y = s[x];
-            if (y == ','|| y == '\0')
+            if (y == ',' || y == '\0')
             {
                 x++;
                 break;
@@ -119,7 +121,7 @@ PAVLNode fileread(void)
         while (1)
         {
             y = s[x];
-            if (y == '\n'|| y == '\0')
+            if (y == '\n' || y == '\0')
                 break;
             o[v] = y;
             v++;
@@ -129,5 +131,6 @@ PAVLNode fileread(void)
         HarshInsert(a, head);
     }
     fclose(user_login);
+
     return head;
-}*/
+}

@@ -173,8 +173,8 @@ void DestroyAVL(PAVLNode *pRoot)
 {
     if (*pRoot)
     {
-        DestroyBSTree(&(*pRoot)->PLeft);
-        DestroyBSTree(&(*pRoot)->PRight);
+        DestroyAVL(&(*pRoot)->PLeft);
+        DestroyAVL(&(*pRoot)->PRight);
         free(*pRoot);
         *pRoot = NULL;
     }

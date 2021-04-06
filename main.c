@@ -11,9 +11,15 @@ int main(void)
     DestroyBSTree(&bst);
     */
 
+    /*
     PAVLNode avl;
     avl = fileread();
     DestroyAVL(&avl);
+    */
+
+    PHarshNode *table;
+    table = HarshFileread();
+    DestoryHarsh(table);
 
     return 0;
 }

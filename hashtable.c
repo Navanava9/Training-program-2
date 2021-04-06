@@ -4,15 +4,6 @@
 #include <stdlib.h>
 #include "head.h"
 
-// 定义一个哈希表的节点
-
-//初始化哈希表
-PHarshNode *HarshInit(void)
-{
-    PHarshNode harshTable[TABIESIZE] = memset(harshTable, 0, sizeof(HarshNode *) * TABIESIZE);
-    return &harshTable;
-}
-
 int HarshKey(char *Key)
 {
     int num = strlen(Key);
