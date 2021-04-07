@@ -7,12 +7,12 @@
 int HarshKey(char *Key)
 {
     int num = strlen(Key);
-    int value = 0;
+    unsigned int value = 0;
     for (int i = 0; i < num; i++)
     {
         value += Key[i] * (BASE ^ i);
     }
-    return value;
+    return (value % TABIESIZE);
 }
 
 void HarshInsert(DataType Key, PHarshNode *harshTable)
@@ -20,7 +20,7 @@ void HarshInsert(DataType Key, PHarshNode *harshTable)
     PHarshNode pHarshNodeHead = NULL;
     PHarshNode pNewNode = NULL;
 
-    int pos = HarshKey(Key.name) % TABIESIZE;
+    int pos = HarshKey(Key.name);
 
     pHarshNodeHead = harshTable[pos];
 
@@ -31,7 +31,7 @@ void HarshInsert(DataType Key, PHarshNode *harshTable)
     if (NULL == pNewNode)
         return;
     pNewNode->key = Key;
-
+    pNewNode->Value = pos;
     pNewNode->pNext = NULL;
 
     pHarshNodeHead = pNewNode;
@@ -45,7 +45,7 @@ PHarshNode FindHarshNode(char *Key, PHarshNode *HarshTable)
     if (NULL == Key)
         return NULL;
 
-    int pos = HarshKey(Key) % TABIESIZE;
+    int pos = HarshKey(Key);
 
     pHarshHead = HarshTable[pos];
 

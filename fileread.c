@@ -91,9 +91,7 @@ PAVLNode fileread(void)
 
 PHarshNode *HarshFileread(void)
 {
-    PHarshNode *head = (HarshNode *)malloc(sizeof(HarshNode) * TABIESIZE);
-    for (int xx = 0; xx < TABIESIZE; xx++)
-        head[xx]->Value = NULL;
+    PHarshNode *head = (PHarshNode *)calloc(TABIESIZE, sizeof(PHarshNode));
     char y;
     FILE *user_login = fopen("C:\\Users\\Administrator.DESKTOP-53KMUVB\\Desktop\\box\\code\\Training-program-2\\data.txt", "r");
     if (user_login == NULL)
