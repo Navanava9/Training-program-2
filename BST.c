@@ -79,7 +79,7 @@ void Insert(PTreeNode *root, DataType a)
     }
 }
 
-PTreeNode minValueNode(PTreeNode node)
+PTreeNode _minValueNode(PTreeNode node)
 {
     PTreeNode current = node;
 
@@ -118,7 +118,7 @@ PTreeNode Delete(PTreeNode root, DataType data)
         }
         else
         {
-            PTreeNode temp = minValueNode(root->Pright);
+            PTreeNode temp = _minValueNode(root->Pright);
 
             root->data = temp->data;
 
