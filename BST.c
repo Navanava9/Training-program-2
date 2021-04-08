@@ -79,108 +79,41 @@ void Insert(PTreeNode *root, DataType a)
     }
 }
 
-int Delete(PTreeNode *Root, DataType a)
+PTreeNode Delete(PTreeNode root, DataType data)
 {
-    if (strcmp((*Root)->data.name, a.name))
-    {
-        if (!(*Root)->PLeft && (*Root)->Pright)
-        {
-            (*Root) = (*Root)->Pright;
-            free((*Root));
-            return 1;
-        }
-        else if ((*Root)->PLeft && !(*Root)->Pright)
-        {
-            (*Root) = (*Root)->PLeft;
-            free((*Root));
-            return 1;
-        }
-        PTreeNode Min = (PTreeNode)malloc(sizeof(TreeNode));
-        Min = (*Root)->Pright;
-        PTreeNode ParentMin = (PTreeNode)malloc(sizeof(TreeNode));
-        ParentMin = (*Root);
-        while (Min->PLeft)
-        {
-            ParentMin = Min;
-            Min = Min->PLeft;
-        }
-        ParentMin->PLeft = Min->Pright;
-        Min->PLeft = (*Root)->PLeft;
-        Min->Pright = (*Root)->Pright;
-        (*Root) = Min;
-        return 1;
-    }
-    PTreeNode Parent = (*Root);
-    PTreeNode Go = (*Root);
-    while (Go)
-    {
-        if (Go->data.totalcount == a.totalcount)
-            break;
-        else if (Go->data.totalcount > a.totalcount)
-        {
-            Parent = Go;
-            Go = Go->PLeft;
-        }
-        else
-        {
-            Parent = Go;
-            Go = Go->Pright;
-        }
-    }
-    if (!Go)
-        return -1;
-    if (!Go->PLeft && Go->Pright)
-    {
-        if (Parent->PLeft == Go)
-            Parent->PLeft = Go->Pright;
-        else
-            Parent->Pright = Go->Pright;
-        free(Go);
-        return 1;
-    }
-    else if (Go->PLeft && !Go->Pright)
-    {
-        if (Parent->PLeft == Go)
-            Parent->PLeft = Go->PLeft;
-        else
-            Parent->Pright = Go->PLeft;
-        free(Go);
-        return 1;
-    }
-    else if (!Go->PLeft && !Go->Pright)
-    {
-        if (Parent->PLeft == Go)
-            Parent->PLeft = NULL;
-        else
-            Parent->Pright = NULL;
-        free(Go);
-        return 1;
-    }
+
+    if (root == NULL)
+        return root;
+
+    if (data.totalcount < root->data.totalcount)
+        root->PLeft = Delete(root->PLeft, data);
+
+    else if (data.totalcount > root->data.totalcount)
+        root->Pright = Delete(root->Pright, data);
+
     else
     {
-        PTreeNode Min = (PTreeNode)malloc(sizeof(TreeNode));
-        Min = Go->Pright;
-        PTreeNode ParentMin = (PTreeNode)malloc(sizeof(TreeNode));
-        ParentMin = Go;
-        while (Min->PLeft)
+        if ((root->PLeft == NULL) || (root->Pright == NULL))
         {
-            ParentMin = Min;
-            Min = Min->PLeft;
-        }
-        if (Parent->PLeft == Go)
-        {
-            Parent->PLeft = Min;
-            ParentMin->PLeft = Min->Pright;
-            Min->PLeft = Go->PLeft;
-            Min->Pright = Go->Pright;
+            PTreeNode temp = root->PLeft ? root->PLeft : root->Pright;
+
+            if (temp == NULL)
+            {
+                temp = root;
+                root = NULL;
+            }
+            else
+                *root = *temp;
+            free(temp);
         }
         else
         {
-            Parent->Pright = Min;
-            ParentMin->PLeft = Min->Pright;
-            Min->PLeft = Go->PLeft;
-            Min->Pright = Go->Pright;
+            PTreeNode temp = minValueNode(root->Pright);
+
+            root->data = temp->data;
+
+            root->Pright = Delete(root->Pright, temp->data);
         }
     }
-    return 1;
-}//返回值-1表示删除非法.1代表成功.
+    return root;
+}

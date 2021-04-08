@@ -39,7 +39,7 @@ PTreeNode Fileread(void);
 PHarshNode *HarshFileread(void);
 
 void DestroyBSTree(PTreeNode *pRoot);
-int Delete(PTreeNode *Root, DataType a);
+PTreeNode Delete(PTreeNode root, DataType data);
 void Insert(PTreeNode *root, DataType a);
 void ProOrderTraversal(PTreeNode T);
 
