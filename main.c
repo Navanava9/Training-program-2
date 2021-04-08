@@ -5,21 +5,20 @@
 
 int main(void)
 {
-    /* 
+    /*
     PTreeNode bst;
     bst = Fileread();
     DestroyBSTree(&bst);
     */
-
     /*
     PAVLNode avl;
     avl = fileread();
     DestroyAVL(&avl);
     */
-
+    /*
     PHarshNode *table;
     table = HarshFileread();
     DestoryHarsh(table);
-
+    */
     return 0;
 }
